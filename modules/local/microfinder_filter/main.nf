@@ -39,7 +39,7 @@ process MICROFINDER_FILTER {
     def VERSION     = "9.1"
     """
     touch ${prefix}.MicroFinder.filtered.tsv
-    
+
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
         coreutils: $VERSION

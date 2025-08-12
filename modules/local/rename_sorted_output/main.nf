@@ -37,4 +37,4 @@ process RENAME_SORTED_OUTPUT {
         coreutils: $VERSION
     END_VERSIONS
     """
-} 
+}

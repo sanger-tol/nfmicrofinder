@@ -19,20 +19,20 @@ include { RENAME_SORTED_OUTPUT  } from '../../../modules/local/rename_sorted_out
 // Function to check GFF content
 def checkGffContent(gff) {
     def nonCommentLines = gff.readLines().findAll { !it.startsWith('#') }
-    
+
     if (nonCommentLines.isEmpty()) {
         return [false, true]  // [hasContent, isEmpty]
     }
-    
+
     def hasMrna = nonCommentLines.any { line ->
         def fields = line.split('\t')
         fields.size() >= 3 && fields[2] == "mRNA"
     }
-    
+
     if (!hasMrna) {
         return [false, true]  // If no mRNA entries, treat as empty
     }
-    
+
     return [true, false]  // [hasContent, isEmpty]
 }
 
@@ -57,7 +57,7 @@ workflow MICROFINDER_MAP {
     //
     def pep_ch = (pep_files instanceof groovyx.gpars.dataflow.DataflowReadChannel) ? pep_files : Channel.fromPath(pep_files)
     pep_ch
-        .map { pf -> 
+        .map { pf ->
             def f = file(pf)
             def meta = [ id: f.baseName, type: 'protein', org: 'reference' ]
             tuple(meta, f)
@@ -79,7 +79,7 @@ workflow MICROFINDER_MAP {
     )
     ch_versions = ch_versions.mix( MINIPROT_ALIGN.out.versions )
 
-   
+
     // Branch based on PAF output
     MINIPROT_ALIGN.out.paf
         .map { meta, paf_file ->
@@ -109,7 +109,7 @@ workflow MICROFINDER_MAP {
     //
     // MODULE: FILTER HITS
     //
-    MICROFINDER_FILTER ( 
+    MICROFINDER_FILTER (
         to_filter.map { meta, paf_file, ref_meta, ref_file, prefix, cutoff -> tuple(meta, paf_file) },
         to_filter.map { meta, paf_file, ref_meta, ref_file, prefix, cutoff -> tuple(ref_meta, ref_file) },
         to_filter.map { meta, paf_file, ref_meta, ref_file, prefix, cutoff -> prefix },
@@ -120,7 +120,7 @@ workflow MICROFINDER_MAP {
     //
     // MODULE: REORDER ASSEMBLY
     //
-    SORT_FASTA ( 
+    SORT_FASTA (
         MICROFINDER_FILTER.out.tsv,
         output_prefix,
         scaffold_length_cutoff

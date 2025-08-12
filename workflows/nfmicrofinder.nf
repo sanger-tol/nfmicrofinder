@@ -27,7 +27,7 @@ workflow NFMICROFINDER {
 
     // Create channels from reference
     reference_tuple = reference
-        .map { obj -> 
+        .map { obj ->
             def ref = file(obj)
             def meta = [id: ref.baseName]
             tuple(meta, ref)
