@@ -37,4 +37,4 @@ process RENAME_EMPTY_OUTPUT {
         coreutils: $VERSION
     END_VERSIONS
     """
-} 
+}
