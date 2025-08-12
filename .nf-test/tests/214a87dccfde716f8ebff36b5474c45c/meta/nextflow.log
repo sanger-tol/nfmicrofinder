@@ -1,0 +1,200 @@
+Aug-12 20:59:30.439 [main] DEBUG nextflow.cli.Launcher - Setting http proxy: ProxyConfig[protocol=http; host=wwwcache.sanger.ac.uk; port=3128]
+Aug-12 20:59:30.477 [main] DEBUG nextflow.cli.Launcher - $> nextflow -log /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/meta/nextflow.log run /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/../main.nf -c /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/nextflow.config -c /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/nextflow.config -params-file /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/meta/params.json -ansi-log false -profile sanger,singularity -with-trace /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/meta/trace.csv -w /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work
+Aug-12 20:59:30.550 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.04.6
+Aug-12 20:59:30.596 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/nfs/treeoflife-01/teams/tola/users/yy5/NXF_HOME/plugins; core-plugins: nf-amazon@2.15.0,nf-azure@1.16.0,nf-cloudcache@0.4.3,nf-codecommit@0.2.3,nf-console@1.2.1,nf-google@1.21.1,nf-k8s@1.0.0,nf-tower@1.11.4,nf-wave@1.12.1
+Aug-12 20:59:30.641 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Aug-12 20:59:30.642 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Aug-12 20:59:30.647 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Aug-12 20:59:30.664 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Aug-12 20:59:30.698 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/nextflow.config
+Aug-12 20:59:30.707 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/nextflow.config
+Aug-12 20:59:30.707 [main] DEBUG nextflow.config.ConfigBuilder - User config file: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/nextflow.config
+Aug-12 20:59:30.709 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/nextflow.config
+Aug-12 20:59:30.710 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/nextflow.config
+Aug-12 20:59:30.710 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/nextflow.config
+Aug-12 20:59:30.764 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /nfs/treeoflife-01/teams/tola/users/yy5/NXF_HOME/secrets/store.json
+Aug-12 20:59:30.770 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@5942ee04] - activable => nextflow.secret.LocalSecretsProvider@5942ee04
+Aug-12 20:59:30.807 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `sanger,singularity`
+Aug-12 20:59:32.902 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `sanger,singularity`
+Aug-12 20:59:33.353 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `sanger,singularity`
+Aug-12 20:59:33.374 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [bih, cfc_dev, uzl_omics, ifb_core, embl_hd, denbi_qbic, alice, mjolnir_globe, uppmax, giga, incliva, ilifu, ki_luria, uge, icr_alma, rosalind_uge, lugh, mccleary, unibe_ibu, vai, czbiohub_aws, jax, roslin, tes, scw, unc_longleaf, tigem, tubingen_apg, google, apollo, ipop_up, vsc_calcua, pdc_kth, googlels, ceci_nic5, ccga_cau, humantechnopole, stjude, daisybio, eddie, medair, biowulf, apptainer, bi, bigpurple, adcra, cedars, pawsey_setonix, vsc_kul_uhasselt, pawsey_nimbus, ucl_myriad, utd_ganymede, charliecloud, fred_hutch, seattlechildrens, icr_davros, ceres, arm, munin, rosalind, hasta, cfc, uzh, shu_bmrc, ebi_codon_slurm, ebc, ccga_dx, crick, ku_sund_danhead, marvin, shifter, biohpc_gen, mana, mamba, york_viking, unc_lccc, wehi, awsbatch, wustl_htcf, arcc, ceci_dragon2, imperial, maestro, software_license, cannon, genotoul, nci_gadi, abims, eva_grace, janelia, nu_genomics, googlebatch, oist, sahmri, kaust, alliance_canada, mpcdf, leicester, vsc_ugent, create, sage, cambridge, jex, podman, ebi_codon, cheaha, xanadu, nyu_hpc, test, marjorie, computerome, ucd_sonic, gpu, seg_globe, mssm, sanger, dkfz, bluebear, pasteur, einstein, ethz_euler, m3c, test_full, imb, ucl_cscluster, tuos_stanage, azurebatch, hki, seadragon, crukmi, csiro_petrichor, qmul_apocrita, wave, docker, engaging, gis, hypatia, psmn, eva, unity, cropdiversityhpc, nygc, fgcz, conda, crg, singularity, mpcdf_viper, pe2, self_hosted_runner, tufts, uw_hyak_pedslabs, binac2, debug, genouest, cbe, unsw_katana, utd_juno, gitpod, phoenix, seawulf, uod_hpc, fub_curta, uct_hpc, aws_tower, binac, fsu_draco]
+Aug-12 20:59:33.430 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Aug-12 20:59:33.464 [main] INFO  nextflow.cli.CmdRun - Launching `/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/../main.nf` [magical_dalembert] DSL2 - revision: 726c6e8fa6
+Aug-12 20:59:33.466 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins declared=[nf-schema@2.4.2]
+Aug-12 20:59:33.467 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Aug-12 20:59:33.467 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[nf-schema@2.4.2]
+Aug-12 20:59:33.469 [main] DEBUG nextflow.plugin.PluginUpdater - Installing plugin nf-schema version: 2.4.2
+Aug-12 20:59:33.562 [main] INFO  org.pf4j.AbstractPluginManager - Plugin 'nf-schema@2.4.2' resolved
+Aug-12 20:59:33.562 [main] INFO  org.pf4j.AbstractPluginManager - Start plugin 'nf-schema@2.4.2'
+Aug-12 20:59:33.572 [main] DEBUG nextflow.plugin.BasePlugin - Plugin started nf-schema@2.4.2
+Aug-12 20:59:33.669 [main] DEBUG nextflow.Session - Session UUID: afa8c574-cb42-462f-805a-4bc2c60e23bf
+Aug-12 20:59:33.669 [main] DEBUG nextflow.Session - Run name: magical_dalembert
+Aug-12 20:59:33.670 [main] DEBUG nextflow.Session - Executor pool size: 30
+Aug-12 20:59:33.679 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Aug-12 20:59:33.685 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=90; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Aug-12 20:59:33.714 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.04.6 build 5954
+  Created: 01-07-2025 11:27 UTC (12:27 BST)
+  System: Linux 5.15.0-141-generic
+  Runtime: Groovy 4.0.26 on OpenJDK 64-Bit Server VM 17.0.15-internal+0-adhoc..src
+  Encoding: UTF-8 (UTF-8)
+  Process: 3345852@tol22-oversubscribed01 [172.27.71.19]
+  CPUs: 30 - Mem: 42.5 GB (3.7 GB) - Swap: 16 GB (16 GB)
+Aug-12 20:59:33.751 [main] DEBUG nextflow.Session - Work-dir: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work [nfs]
+Aug-12 20:59:33.784 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Aug-12 20:59:33.802 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Aug-12 20:59:33.838 [main] DEBUG nextflow.Session - Observer factory: ValidationObserverFactory
+Aug-12 20:59:33.847 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+Aug-12 20:59:33.891 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Aug-12 20:59:33.909 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 31; maxThreads: 1000
+Aug-12 20:59:34.076 [main] DEBUG nextflow.Session - Session start
+Aug-12 20:59:34.081 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/meta/trace.csv
+Aug-12 20:59:34.094 [main] DEBUG n.validation.config.ValidationConfig - Set `validation.monochromeLogs` to false
+Aug-12 20:59:34.097 [main] DEBUG n.validation.config.ValidationConfig - Added the following parameters to the ignored parameters: [genomes]
+Aug-12 20:59:34.100 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.enabled` to true
+Aug-12 20:59:34.101 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.showHiddenParameter` to show_hidden
+Aug-12 20:59:34.102 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.showHidden` to false (Due to --show_hidden)
+Aug-12 20:59:34.103 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.fullParameter` to help_full
+Aug-12 20:59:34.117 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.command` to nextflow run sanger-tol/nfmicrofinder -profile <docker/singularity/.../institute> --input samplesheet.csv --outdir <OUTDIR>
+Aug-12 20:59:34.269 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Aug-12 20:59:35.027 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Aug-12 20:59:35.035 [main] DEBUG n.validation.config.ValidationConfig - Set `validation.monochromeLogs` to false
+Aug-12 20:59:35.035 [main] DEBUG n.validation.config.ValidationConfig - Added the following parameters to the ignored parameters: [genomes]
+Aug-12 20:59:35.035 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.enabled` to true
+Aug-12 20:59:35.035 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.showHiddenParameter` to show_hidden
+Aug-12 20:59:35.036 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.showHidden` to false (Due to --show_hidden)
+Aug-12 20:59:35.036 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.fullParameter` to help_full
+Aug-12 20:59:35.036 [main] DEBUG n.validation.config.HelpConfig - Set `validation.help.command` to nextflow run sanger-tol/nfmicrofinder -profile <docker/singularity/.../institute> --input samplesheet.csv --outdir <OUTDIR>
+Aug-12 20:59:35.380 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Aug-12 20:59:35.381 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Aug-12 20:59:35.384 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Aug-12 20:59:35.385 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Aug-12 20:59:35.631 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryLog:paramsSummaryLog]; plugin Id: nf-schema
+Aug-12 20:59:35.632 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [validateParameters:validateParameters]; plugin Id: nf-schema
+Aug-12 20:59:35.635 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [paramsSummaryMap:paramsSummaryMap]; plugin Id: nf-schema
+Aug-12 20:59:35.636 [main] DEBUG nextflow.script.IncludeDef - Loading included plugin extensions with names: [samplesheetToList:samplesheetToList]; plugin Id: nf-schema
+Aug-12 20:59:35.955 [main] INFO  nextflow.Nextflow - [1mInput/output options[0m
+  [0;34minput                       : [0;32mhttps://ftp.ensembl.org/pub/release-114/fasta/taeniopygia_guttata/dna/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.gz[0m
+  [0;34moutdir                      : [0;32m/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/output[0m
+
+[1mInstitutional config options[0m
+  [0;34mconfig_profile_description  : [0;32mThe Wellcome Sanger Institute HPC cluster profile[0m
+  [0;34mconfig_profile_contact      : [0;32mPriyanka Surana (@priyanka-surana)[0m
+  [0;34mconfig_profile_url          : [0;32mhttps://www.sanger.ac.uk[0m
+
+[1mGeneric options[0m
+  [0;34mpipelines_testdata_base_path: [0;32mhttps://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/nfmicrofinder[0m
+  [0;34mtrace_report_suffix         : [0;32m2025-08-12_20-59-32[0m
+
+[1mCore Nextflow options[0m
+  [0;34mrunName                     : [0;32mmagical_dalembert[0m
+  [0;34mcontainerEngine             : [0;32msingularity[0m
+  [0;34mlaunchDir                   : [0;32m/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c[0m
+  [0;34mworkDir                     : [0;32m/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work[0m
+  [0;34mprojectDir                  : [0;32m/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder[0m
+  [0;34muserName                    : [0;32myy5[0m
+  [0;34mprofile                     : [0;32msanger,singularity[0m
+  [0;34mconfigFiles                 : [0;32m/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/nextflow.config, /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/nextflow.config, /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/nextflow.config[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+-[2m----------------------------------------------------[0m-
+Aug-12 20:59:35.974 [main] DEBUG n.v.parameters.ParameterValidator - Starting parameters validation
+Aug-12 20:59:36.389 [main] WARN  n.v.parameters.ParameterValidator - The following invalid input values have been detected:
+
+* --pep_file: https://tolit.cog.sanger.ac.uk/test-data/birds_protein/MicroFinder_prot_set.v0.1.fa.gz
+* --modules_testdata_base_path: https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/
+* --scaffold_length_cutoff: 500000
+* --max_cpus: 64
+* --max_memory: 1.4 TB
+* --max_time: 62d
+
+
+Aug-12 20:59:36.393 [main] DEBUG n.v.parameters.ParameterValidator - Finishing parameters validation
+Aug-12 20:59:36.533 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_INDEX
+Aug-12 20:59:36.547 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: lsf
+Aug-12 20:59:36.548 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'lsf'
+Aug-12 20:59:36.560 [main] DEBUG nextflow.executor.Executor - [warm up] executor > lsf
+Aug-12 20:59:36.567 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'lsf' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+Aug-12 20:59:36.571 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: lsf)
+Aug-12 20:59:36.572 [main] DEBUG n.processor.TaskPollingMonitor - Creating submit rate limit of 5 submissions per 1 seconds
+Aug-12 20:59:36.578 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'lsf' > queue-stat-interval: 1m
+Aug-12 20:59:36.585 [main] DEBUG nextflow.executor.LsfExecutor - [LSF] Detected lsf.conf LSF_UNIT_FOR_LIMITS=MB
+Aug-12 20:59:36.612 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_INDEX': maxForks=0; fair=false; array=0
+Aug-12 20:59:36.690 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_ALIGN
+Aug-12 20:59:36.694 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: lsf
+Aug-12 20:59:36.694 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'lsf'
+Aug-12 20:59:36.695 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_ALIGN': maxForks=0; fair=false; array=0
+Aug-12 20:59:36.719 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:RENAME_EMPTY_OUTPUT
+Aug-12 20:59:36.721 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: lsf
+Aug-12 20:59:36.722 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'lsf'
+Aug-12 20:59:36.723 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:RENAME_EMPTY_OUTPUT': maxForks=0; fair=false; array=0
+Aug-12 20:59:36.750 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MICROFINDER_FILTER
+Aug-12 20:59:36.754 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: lsf
+Aug-12 20:59:36.754 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'lsf'
+Aug-12 20:59:36.755 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MICROFINDER_FILTER': maxForks=0; fair=false; array=0
+Aug-12 20:59:36.768 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:SORT_FASTA
+Aug-12 20:59:36.771 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: lsf
+Aug-12 20:59:36.771 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'lsf'
+Aug-12 20:59:36.772 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:SORT_FASTA': maxForks=0; fair=false; array=0
+Aug-12 20:59:36.788 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:RENAME_SORTED_OUTPUT
+Aug-12 20:59:36.791 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: lsf
+Aug-12 20:59:36.792 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'lsf'
+Aug-12 20:59:36.793 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:RENAME_SORTED_OUTPUT': maxForks=0; fair=false; array=0
+Aug-12 20:59:36.844 [main] DEBUG nextflow.Session - Config process names validation disabled as requested
+Aug-12 20:59:36.847 [main] DEBUG nextflow.Session - Igniting dataflow network (13)
+Aug-12 20:59:36.855 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_INDEX
+Aug-12 20:59:36.855 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_ALIGN
+Aug-12 20:59:36.855 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:RENAME_EMPTY_OUTPUT
+Aug-12 20:59:36.855 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MICROFINDER_FILTER
+Aug-12 20:59:36.855 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:SORT_FASTA
+Aug-12 20:59:36.856 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:RENAME_SORTED_OUTPUT
+Aug-12 20:59:36.856 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_4f612cfd8c52e8cd: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/subworkflows/nf-core/utils_nextflow_pipeline/main.nf
+  Script_4c40806d741c6a95: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/subworkflows/local/microfinder_map/main.nf
+  Script_215a636da7ab24a2: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/subworkflows/nf-core/utils_nfschema_plugin/main.nf
+  Script_ce57948bb5f7f7c3: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/subworkflows/local/utils_nfcore_nfmicrofinder_pipeline/main.nf
+  Script_0edcf93bc25934fa: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/modules/local/sort_fasta/main.nf
+  Script_a82a220ea9da61f0: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/modules/local/rename_empty_output/main.nf
+  Script_5c4e8d4051efa81e: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/subworkflows/nf-core/utils_nfcore_pipeline/main.nf
+  Script_6320cc9293e1511c: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/modules/nf-core/miniprot/align/main.nf
+  Script_63bb2d6168958b54: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/modules/nf-core/miniprot/index/main.nf
+  Script_9ffa31da68b94f5b: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/modules/local/microfinder_filter/main.nf
+  Script_0f6ab62df6431c58: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/workflows/nfmicrofinder.nf
+  Script_61cb1e149bf76473: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/main.nf
+  Script_7c923fb33b297b6f: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/modules/local/rename_sorted_output/main.nf
+Aug-12 20:59:36.857 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Aug-12 20:59:36.857 [main] DEBUG nextflow.Session - Session await
+Aug-12 20:59:36.991 [FileTransfer-1] DEBUG nextflow.file.FilePorter - Copying foreign file https://ftp.ensembl.org/pub/release-114/fasta/taeniopygia_guttata/dna/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.gz to work dir: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work/stage-afa8c574-cb42-462f-805a-4bc2c60e23bf/01/708a95d6a5ea4a301a1ee782b39826/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.gz
+Aug-12 20:59:37.691 [Actor Thread 30] DEBUG nextflow.container.SingularityCache - Singularity found local library for image=https://depot.galaxyproject.org/singularity/miniprot:0.11--he4a0461_2; path=/nfs/treeoflife-01/teams/shared/nextflow/cache/nxf_singularity/depot.galaxyproject.org-singularity-miniprot-0.11--he4a0461_2.img
+Aug-12 20:59:38.148 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [LSF] submitted process SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_INDEX (Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa) > jobId: 43514; workDir: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work/c7/32fd7a9ad8a054512fe1a4da9d5b0d
+Aug-12 20:59:38.148 [Task submitter] INFO  nextflow.Session - [c7/32fd7a] Submitted process > SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_INDEX (Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa)
+Aug-12 21:00:16.590 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 43514; id: 1; name: SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_INDEX (Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa); status: COMPLETED; exit: 0; error: -; workDir: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work/c7/32fd7a9ad8a054512fe1a4da9d5b0d started: 1755028781584; exited: 2025-08-12T19:59:45.513309Z; ]
+Aug-12 21:00:16.591 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=90; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Aug-12 21:00:16.644 [TaskFinalizer-1] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=90; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+Aug-12 21:00:16.684 [FileTransfer-2] DEBUG nextflow.file.FilePorter - Copying foreign file https://tolit.cog.sanger.ac.uk/test-data/birds_protein/MicroFinder_prot_set.v0.1.fa.gz to work dir: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work/stage-afa8c574-cb42-462f-805a-4bc2c60e23bf/cd/e621e28b9c8f486d2c630ec49f4588/MicroFinder_prot_set.v0.1.fa.gz
+Aug-12 21:00:17.200 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [LSF] submitted process SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_ALIGN (MicroFinder_prot_set.v0.1.fa) > jobId: 43519; workDir: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work/45/e561b761b6136a7bbd2fce36cbb61e
+Aug-12 21:00:17.200 [Task submitter] INFO  nextflow.Session - [45/e561b7] Submitted process > SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_ALIGN (MicroFinder_prot_set.v0.1.fa)
+Aug-12 21:00:21.622 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 43519; id: 2; name: SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_ALIGN (MicroFinder_prot_set.v0.1.fa); status: COMPLETED; exit: 0; error: -; workDir: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work/45/e561b761b6136a7bbd2fce36cbb61e started: 1755028821584; exited: 2025-08-12T20:00:20.133483Z; ]
+Aug-12 21:00:21.723 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Process SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:MINIPROT_ALIGN > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Aug-12 21:00:21.764 [Actor Thread 23] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 3; slices: 1; internal sort time: 0.021 s; external sort time: 0.002 s; total time: 0.023 s
+Aug-12 21:00:21.775 [Actor Thread 24] DEBUG nextflow.container.SingularityCache - Singularity found local library for image=https://depot.galaxyproject.org/singularity/ubuntu:20.04; path=/nfs/treeoflife-01/teams/shared/nextflow/cache/nxf_singularity/depot.galaxyproject.org-singularity-ubuntu-20.04.img
+Aug-12 21:00:21.785 [Actor Thread 23] DEBUG nextflow.file.FileCollector - Saved collect-files list to: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work/collect-file/ec1ab6b5d83f571af6b7c475af09495e
+Aug-12 21:00:21.797 [Actor Thread 23] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-11123081383950661306
+Aug-12 21:00:22.102 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [LSF] submitted process SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:RENAME_EMPTY_OUTPUT (Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa) > jobId: 43521; workDir: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work/2b/a4ff10c86a5ec8019a726116ea4c19
+Aug-12 21:00:22.103 [Task submitter] INFO  nextflow.Session - [2b/a4ff10] Submitted process > SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:RENAME_EMPTY_OUTPUT (Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa)
+Aug-12 21:00:26.599 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 43521; id: 3; name: SANGERTOL_NFMICROFINDER:NFMICROFINDER:MICROFINDER_MAP:RENAME_EMPTY_OUTPUT (Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa); status: COMPLETED; exit: 0; error: -; workDir: /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/work/2b/a4ff10c86a5ec8019a726116ea4c19 started: 1755028826585; exited: 2025-08-12T20:00:22.871797Z; ]
+Aug-12 21:00:26.612 [main] DEBUG nextflow.Session - Session await > all processes finished
+Aug-12 21:00:31.582 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: lsf) - terminating tasks monitor poll loop
+Aug-12 21:00:31.583 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Aug-12 21:00:31.587 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Aug-12 21:00:31.587 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Aug-12 21:00:31.594 [main] INFO  nextflow.Nextflow - -[0;35m[sanger-tol/nfmicrofinder][0;32m Pipeline completed successfully[0m-
+Aug-12 21:00:31.599 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=3; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=54.4s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=6; peakMemory=36 GB; ]
+Aug-12 21:00:31.600 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Aug-12 21:00:31.664 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Aug-12 21:00:32.335 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Aug-12 21:00:32.528 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Aug-12 21:00:32.641 [main] INFO  org.pf4j.AbstractPluginManager - Stop plugin 'nf-schema@2.4.2'
+Aug-12 21:00:32.641 [main] DEBUG nextflow.plugin.BasePlugin - Plugin stopped nf-schema
+Aug-12 21:00:32.643 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Aug-12 21:00:32.644 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

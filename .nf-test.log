@@ -1,0 +1,18 @@
+Aug-12 20:59:26.232 [main] INFO  com.askimed.nf.test.App - nf-test 0.9.2
+Aug-12 20:59:26.250 [main] INFO  com.askimed.nf.test.App - Arguments: [test, tests/default.nf.test, --verbose, --profile, sanger,singularity]
+Aug-12 20:59:27.628 [main] INFO  com.askimed.nf.test.App - Nextflow Version: 25.04.6
+Aug-12 20:59:27.630 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Load config from file /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/nf-test.config...
+Aug-12 20:59:28.504 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Loaded 14 files from directory /nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder in 0.368 sec
+Aug-12 20:59:28.506 [main] INFO  com.askimed.nf.test.lang.dependencies.DependencyResolver - Found 1 files containing tests.
+Aug-12 20:59:28.506 [main] DEBUG com.askimed.nf.test.lang.dependencies.DependencyResolver - Found files: [/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/default.nf.test]
+Aug-12 20:59:28.699 [main] INFO  com.askimed.nf.test.commands.RunTestsCommand - Found 1 tests to execute.
+Aug-12 20:59:28.700 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Started test plan
+Aug-12 20:59:28.700 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Running testsuite 'Test pipeline' from file '/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/default.nf.test'.
+Aug-12 20:59:28.700 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Run test '214a87dc: Test pipeline with default parameters'. type: com.askimed.nf.test.lang.pipeline.PipelineTest
+Aug-12 21:00:32.925 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Init new snapshot file '/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/default.nf.test.snap'
+Aug-12 21:00:32.927 [main] DEBUG com.askimed.nf.test.lang.extensions.Snapshot - Snapshot 'Test pipeline with default parameters' not found.
+Aug-12 21:00:32.928 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Created snapshot 'Test pipeline with default parameters'
+Aug-12 21:00:37.294 [main] DEBUG com.askimed.nf.test.lang.extensions.SnapshotFile - Wrote snapshots to file '/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/tests/default.nf.test.snap'
+Aug-12 21:00:37.294 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Test '214a87dc: Test pipeline with default parameters' finished. status: PASSED
+Aug-12 21:00:37.297 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Testsuite 'Test pipeline' finished. snapshot file: true, skipped tests: false, failed tests: false
+Aug-12 21:00:37.300 [main] INFO  com.askimed.nf.test.core.TestExecutionEngine - Executed 1 tests. 0 tests failed. Done!

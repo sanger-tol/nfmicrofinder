@@ -1,0 +1,41 @@
+{
+    "input": "https://ftp.ensembl.org/pub/release-114/fasta/taeniopygia_guttata/dna/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.gz",
+    "pep_file": "https://tolit.cog.sanger.ac.uk/test-data/birds_protein/MicroFinder_prot_set.v0.1.fa.gz",
+    "scaffold_length_cutoff": 500000,
+    "outdir": "/nfs/treeoflife-01/teams/tola/users/yy5/newone/sanger-tol-nfmicrofinder/.nf-test/tests/214a87dccfde716f8ebff36b5474c45c/output",
+    "publish_dir_mode": "copy",
+    "email": null,
+    "email_on_fail": null,
+    "plaintext_email": false,
+    "monochrome_logs": false,
+    "hook_url": null,
+    "help": false,
+    "help_full": false,
+    "show_hidden": false,
+    "version": false,
+    "pipelines_testdata_base_path": "https://raw.githubusercontent.com/nf-core/test-datasets/refs/heads/nfmicrofinder",
+    "trace_report_suffix": "2025-08-12_20-59-32",
+    "config_profile_name": null,
+    "config_profile_description": "The Wellcome Sanger Institute HPC cluster profile",
+    "custom_config_version": "master",
+    "custom_config_base": "https://raw.githubusercontent.com/nf-core/configs/master",
+    "config_profile_contact": "Priyanka Surana (@priyanka-surana)",
+    "config_profile_url": "https://www.sanger.ac.uk",
+    "validate_params": true,
+    "max_memory": {
+        "bytes": 1539316278886,
+        "giga": 1433,
+        "kilo": 1503238553,
+        "mega": 1468006
+    },
+    "max_cpus": 64,
+    "max_time": {
+        "durationInMillis": 5356800000,
+        "days": 62,
+        "hours": 1488,
+        "millis": 5356800000,
+        "minutes": 89280,
+        "seconds": 5356800
+    },
+    "modules_testdata_base_path": "https://raw.githubusercontent.com/nf-core/test-datasets/modules/data/"
+}
