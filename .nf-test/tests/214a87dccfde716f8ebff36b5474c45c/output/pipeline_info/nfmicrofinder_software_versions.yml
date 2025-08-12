@@ -1,7 +1,0 @@
-MINIPROT_ALIGN:
-  miniprot: 0.11-r234
-MINIPROT_INDEX:
-  miniprot: 0.11-r234
-Workflow:
-  sanger-tol/nfmicrofinder: v1.0.0
-  Nextflow: 25.04.6
