@@ -57,7 +57,7 @@ nfmicrofinder was originally written by Yumi Sims and Will Eagle ([@weaglesBio](
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
-* Jim Downie ([@prototaxites](https://github.com/prototaxites))
+- Jim Downie ([@prototaxites](https://github.com/prototaxites))
 
 ## Contributions and Support
 

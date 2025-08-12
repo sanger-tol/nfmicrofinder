@@ -87,9 +87,11 @@ Specify the path to a specific config file (this is a core Nextflow command). Se
 > This option should only be used for tuning process resource specifications, institutional infrastructure settings, and module arguments. This is not a recommended way of providing custom parameters for a pipeline.
 
 #### profile
+
 It's common to have a shared configuration file that you use for all pipeline runs, such as one for your research institute. See the [nf-core website documentation](https://nf-co.re/usage/configuration#adding-a-shared-profile) for more information on how to create and use one.
 
 ## Job Resources
+
 ### Automatic resubmission
 
 Each step in the pipeline has a default set of requirements for number of CPUs, memory and time. For most of the pipeline steps, if the job exits with any of the error codes specified [here](https://github.com/nf-core/rnaseq/blob/4c27ef5610c87db00c3c5a3eed10b1d161abf575/conf/base.config#L18) it will automatically be resubmitted with higher resources (2 x original, then 3 x original). If it still fails after the third attempt then the pipeline execution is stopped.
