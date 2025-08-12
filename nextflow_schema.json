@@ -22,6 +22,23 @@
                     "help_text": "Specify the path to your input FASTA file. Supported extensions: .fa, .fasta, .fa.gz, .fasta.gz.",
                     "fa_icon": "fas fa-file-alt"
                 },
+                "pep_file": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "mimetype": "text/plain",
+                    "pattern": "^\\S+\\.(fa|faa|fasta)(\\.gz)?$",
+                    "description": "Path to protein FASTA file used for alignment (e.g. UniProt or predicted proteins).",
+                    "help_text": "Supported extensions: .fa, .faa, .fasta with optional .gz compression.",
+                    "fa_icon": "fas fa-dna"
+                },
+                "scaffold_length_cutoff": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Minimum scaffold length to consider for filtering and sorting (in bases).",
+                    "help_text": "Scaffolds shorter than this length may be deprioritized or filtered depending on the workflow step.",
+                    "fa_icon": "fas fa-ruler"
+                },
                 "outdir": {
                     "type": "string",
                     "format": "directory-path",
