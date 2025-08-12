@@ -4,11 +4,14 @@ nextflow_pipeline {
     script "../main.nf"
     tag "pipeline"
 
-    test("-profile test") {
+    test("Test pipeline with default parameters") {
 
         when {
             params {
                 outdir = "$outputDir"
+                input = "https://ftp.ensembl.org/pub/release-114/fasta/taeniopygia_guttata/dna/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.gz"
+                pep_file = "https://tolit.cog.sanger.ac.uk/test-data/birds_protein/MicroFinder_prot_set.v0.1.fa.gz"
+                scaffold_length_cutoff = 500000
             }
         }
 
