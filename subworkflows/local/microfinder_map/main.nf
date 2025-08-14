@@ -99,6 +99,7 @@ workflow MICROFINDER_MAP {
     RENAME_EMPTY_OUTPUT(gff_output.empty_gff)
         .fa
         .set { final_fasta }
+    ch_versions = ch_versions.mix( RENAME_EMPTY_OUTPUT.out.versions )
 
     // Process PAF content
     gff_output.has_content
@@ -131,6 +132,7 @@ workflow MICROFINDER_MAP {
     RENAME_SORTED_OUTPUT(SORT_FASTA.out.fa)
         .fa
         .set { ch_sorted_fasta }
+    ch_versions = ch_versions.mix( RENAME_SORTED_OUTPUT.out.versions )
 
     // Mix sorted fasta with reference fasta (for empty GFF case)
     sorted_fasta = ch_sorted_fasta.mix(final_fasta)
