@@ -16,12 +16,28 @@
                     "type": "string",
                     "format": "file-path",
                     "exists": true,
-                    "schema": "assets/schema_input.json",
-                    "mimetype": "text/csv",
-                    "pattern": "^\\S+\\.csv$",
-                    "description": "Path to comma-separated file containing information about the samples in the experiment.",
-                    "help_text": "You will need to create a design file with information about the samples in your experiment before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 3 columns, and a header row.",
-                    "fa_icon": "fas fa-file-csv"
+                    "mimetype": "text/plain",
+                    "pattern": "^\\S+\\.fa(sta)?(\\.gz)?$",
+                    "description": "Path to input FASTA file.",
+                    "help_text": "Specify the path to your input FASTA file. Supported extensions: .fa, .fasta, .fa.gz, .fasta.gz.",
+                    "fa_icon": "fas fa-file-alt"
+                },
+                "pep_file": {
+                    "type": "string",
+                    "format": "file-path",
+                    "exists": true,
+                    "mimetype": "text/plain",
+                    "pattern": "^\\S+\\.(fa|faa|fasta)(\\.gz)?$",
+                    "description": "Path to protein FASTA file used for alignment (e.g. UniProt or predicted proteins).",
+                    "help_text": "Supported extensions: .fa, .faa, .fasta with optional .gz compression.",
+                    "fa_icon": "fas fa-dna"
+                },
+                "scaffold_length_cutoff": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "Minimum scaffold length to consider for filtering and sorting (in bases).",
+                    "help_text": "Scaffolds shorter than this length may be deprioritized or filtered depending on the workflow step.",
+                    "fa_icon": "fas fa-ruler"
                 },
                 "outdir": {
                     "type": "string",

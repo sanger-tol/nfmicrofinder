@@ -28,7 +28,9 @@ include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_nfmi
 workflow SANGERTOL_NFMICROFINDER {
 
     take:
-    samplesheet // channel: samplesheet read in from --input
+    reference // channel: path(fasta)
+    pep_file // channel: val(pep_file_path)
+    scaffold_length_cutoff // channel: val(cutoff)
 
     main:
 
@@ -36,7 +38,9 @@ workflow SANGERTOL_NFMICROFINDER {
     // WORKFLOW: Run pipeline
     //
     NFMICROFINDER (
-        samplesheet
+        reference,
+        pep_file,
+        scaffold_length_cutoff
     )
 }
 /*
@@ -57,14 +61,18 @@ workflow {
         params.monochrome_logs,
         args,
         params.outdir,
-        params.input
+        params.input,
+        params.pep_file,
+        params.scaffold_length_cutoff
     )
 
     //
     // WORKFLOW: Run main workflow
     //
     SANGERTOL_NFMICROFINDER (
-        PIPELINE_INITIALISATION.out.samplesheet
+        PIPELINE_INITIALISATION.out.fasta,
+        PIPELINE_INITIALISATION.out.pep_file,
+        PIPELINE_INITIALISATION.out.scaffold_length_cutoff
     )
     //
     // SUBWORKFLOW: Run completion tasks

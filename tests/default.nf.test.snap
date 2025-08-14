@@ -1,0 +1,40 @@
+{
+    "Test pipeline with default parameters": {
+        "content": [
+            3,
+            {
+                "MINIPROT_ALIGN": {
+                    "miniprot": "0.11-r234"
+                },
+                "MINIPROT_INDEX": {
+                    "miniprot": "0.11-r234"
+                },
+                "RENAME_EMPTY_OUTPUT": {
+                    "coreutils": 9.1
+                },
+                "Workflow": {
+                    "sanger-tol/nfmicrofinder": "v1.0.0"
+                }
+            },
+            [
+                "microfinder",
+                "microfinder/final.fa",
+                "miniprot",
+                "miniprot/MicroFinder_prot_set.v0.1.fa.paf",
+                "miniprot/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.mpi",
+                "pipeline_info",
+                "pipeline_info/nfmicrofinder_software_versions.yml"
+            ],
+            [
+                "final.fa:md5,cef9ba9b0ee7934e24dbc8888f901966",
+                "MicroFinder_prot_set.v0.1.fa.paf:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.mpi:md5,b5825c8386cc3338685902e999e7088c"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.2",
+            "nextflow": "25.04.6"
+        },
+        "timestamp": "2025-08-14T16:25:53.019321361"
+    }
+}

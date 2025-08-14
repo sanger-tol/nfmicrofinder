@@ -31,7 +31,9 @@ workflow PIPELINE_INITIALISATION {
     monochrome_logs   // boolean: Do not use coloured log outputs
     nextflow_cli_args //   array: List of positional nextflow CLI args
     outdir            //  string: The output directory where the results will be saved
-    input             //  string: Path to input samplesheet
+    input             //  string: Path to input FASTA file
+    pep_file          //  string: Path to protein FASTA file
+    scaffold_length_cutoff // integer: Maximum length cutoff for scaffold consideration
 
     main:
 
@@ -63,33 +65,28 @@ workflow PIPELINE_INITIALISATION {
         nextflow_cli_args
     )
 
+
     //
-    // Create channel from input file provided through params.input
+    // Create channels from input files
     //
+    Channel
+        .fromPath(input)
+        .ifEmpty { exit 1, "Cannot find input FASTA file: ${input}" }
+        .set { ch_fasta }
 
     Channel
-        .fromList(samplesheetToList(params.input, "${projectDir}/assets/schema_input.json"))
-        .map {
-            meta, fastq_1, fastq_2 ->
-                if (!fastq_2) {
-                    return [ meta.id, meta + [ single_end:true ], [ fastq_1 ] ]
-                } else {
-                    return [ meta.id, meta + [ single_end:false ], [ fastq_1, fastq_2 ] ]
-                }
-        }
-        .groupTuple()
-        .map { samplesheet ->
-            validateInputSamplesheet(samplesheet)
-        }
-        .map {
-            meta, fastqs ->
-                return [ meta, fastqs.flatten() ]
-        }
-        .set { ch_samplesheet }
+        .value(pep_file)
+        .set { ch_pep_file }
+
+    Channel
+        .value(scaffold_length_cutoff)
+        .set { ch_scaffold_length_cutoff }
 
     emit:
-    samplesheet = ch_samplesheet
-    versions    = ch_versions
+    fasta = ch_fasta
+    pep_file = ch_pep_file
+    scaffold_length_cutoff = ch_scaffold_length_cutoff
+    versions = ch_versions
 }
 
 /*

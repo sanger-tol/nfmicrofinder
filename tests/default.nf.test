@@ -4,11 +4,14 @@ nextflow_pipeline {
     script "../main.nf"
     tag "pipeline"
 
-    test("-profile test") {
+    test("Test pipeline with default parameters") {
 
         when {
             params {
                 outdir = "$outputDir"
+                input = "https://ftp.ensembl.org/pub/release-114/fasta/taeniopygia_guttata/dna/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.gz"
+                pep_file = "https://tolit.cog.sanger.ac.uk/test-data/birds_protein/MicroFinder_prot_set.v0.1.fa.gz"
+                scaffold_length_cutoff = 500000
             }
         }
 
@@ -23,7 +26,7 @@ nextflow_pipeline {
                     // Number of successful tasks
                     workflow.trace.succeeded().size(),
                     // pipeline versions.yml file for multiqc from which Nextflow version is removed because we test pipelines on multiple Nextflow versions
-                    removeNextflowVersion("$outputDir/pipeline_info/nfmicrofinder_software_mqc_versions.yml"),
+                    removeNextflowVersion("$outputDir/pipeline_info/nfmicrofinder_software_versions.yml"),
                     // All stable path name, with a relative path
                     stable_name,
                     // All files with stable contents
