@@ -9,6 +9,9 @@
                 "MINIPROT_INDEX": {
                     "miniprot": "0.11-r234"
                 },
+                "RENAME_EMPTY_OUTPUT": {
+                    "coreutils": 9.1
+                },
                 "Workflow": {
                     "sanger-tol/nfmicrofinder": "v1.0.0"
                 }
@@ -32,6 +35,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-08-12T21:00:32.927921556"
+        "timestamp": "2025-08-14T16:25:53.019321361"
     }
 }
