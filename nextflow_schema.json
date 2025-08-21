@@ -17,9 +17,9 @@
                     "format": "file-path",
                     "exists": true,
                     "mimetype": "text/plain",
-                    "pattern": "^\\S+\\.fa(sta)?(\\.gz)?$",
+                    "pattern": "^\\S+\\.(fa(sta)?|fna)(\\.gz)?$",
                     "description": "Path to input FASTA file.",
-                    "help_text": "Specify the path to your input FASTA file. Supported extensions: .fa, .fasta, .fa.gz, .fasta.gz.",
+                    "help_text": "Specify the path to your input FASTA file. Supported extensions: .fa, .fasta, .fna, .fa.gz, .fasta.gz, .fna.gz.",
                     "fa_icon": "fas fa-file-alt"
                 },
                 "pep_file": {
