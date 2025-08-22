@@ -70,7 +70,7 @@ workflow {
     // WORKFLOW: Run main workflow
     //
     SANGERTOL_NFMICROFINDER (
-        PIPELINE_INITIALISATION.out.fasta,
+        PIPELINE_INITIALISATION.out.reference_tuple,
         PIPELINE_INITIALISATION.out.pep_file,
         PIPELINE_INITIALISATION.out.scaffold_length_cutoff
     )

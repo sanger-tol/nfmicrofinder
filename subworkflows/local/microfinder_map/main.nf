@@ -16,26 +16,6 @@ include { MICROFINDER_FILTER    } from '../../../modules/local/microfinder_filte
 include { RENAME_EMPTY_OUTPUT   } from '../../../modules/local/rename_empty_output/main'
 include { RENAME_SORTED_OUTPUT  } from '../../../modules/local/rename_sorted_output/main'
 
-// Function to check GFF content
-def checkGffContent(gff) {
-    def nonCommentLines = gff.readLines().findAll { !it.startsWith('#') }
-
-    if (nonCommentLines.isEmpty()) {
-        return [false, true]  // [hasContent, isEmpty]
-    }
-
-    def hasMrna = nonCommentLines.any { line ->
-        def fields = line.split('\t')
-        fields.size() >= 3 && fields[2] == "mRNA"
-    }
-
-    if (!hasMrna) {
-        return [false, true]  // If no mRNA entries, treat as empty
-    }
-
-    return [true, false]  // [hasContent, isEmpty]
-}
-
 workflow MICROFINDER_MAP {
     take:
     reference_tuple     // Channel: [ val(meta), path(file) ]

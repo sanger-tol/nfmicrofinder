@@ -72,6 +72,19 @@ workflow PIPELINE_INITIALISATION {
     Channel
         .fromPath(input)
         .set { ch_fasta }
+    
+    reference_tuple = ch_fasta
+        .map { obj ->
+            def ref = file(obj)
+            def meta = [id: ref.baseName]
+            tuple(meta, ref)
+        }
+        .branch { meta, file ->
+            reference: true
+                return tuple(meta, file)
+            prefix: true
+                return meta.id
+        }
 
     Channel
         .fromPath(pep_file)
@@ -83,7 +96,7 @@ workflow PIPELINE_INITIALISATION {
         .set { ch_scaffold_length_cutoff }
 
     emit:
-    fasta = ch_fasta
+    fasta = reference_tuple
     pep_file = ch_pep_file
     scaffold_length_cutoff = ch_scaffold_length_cutoff
     versions = ch_versions
