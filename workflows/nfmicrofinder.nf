@@ -49,8 +49,8 @@ workflow NFMICROFINDER {
 
     MICROFINDER_MAP (
         reference_tuple.reference,
-        scaffold_length_cutoff_ch,
-        pep_file_ch,
+        scaffold_length_cutoff,
+        pep_file,
         output_prefix
     )
 
