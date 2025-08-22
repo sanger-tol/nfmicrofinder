@@ -72,7 +72,6 @@ workflow PIPELINE_INITIALISATION {
     Channel
         .fromPath(input)
         .set { ch_fasta }
-    
 
     Channel
         .fromPath(pep_file)
