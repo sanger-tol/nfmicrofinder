@@ -84,11 +84,11 @@ workflow MICROFINDER_MAP {
     MINIPROT_ALIGN.out.paf
         .map { meta, paf_file ->
             def has_content = file(paf_file).size() > 0
-            tuple(has_content, !has_content, meta, paf_file)
+            tuple(has_content, meta, paf_file)
         }
         .combine(reference_tuple)
-        .branch { has_content, is_empty, meta, paf_file, ref_meta, ref_file ->
-            empty_gff: is_empty
+        .branch { has_content, meta, paf_file, ref_meta, ref_file ->
+            empty_gff: !has_content
                 return tuple(ref_meta, ref_file)
             has_content: has_content
                 return tuple(meta, paf_file, ref_meta, ref_file)
