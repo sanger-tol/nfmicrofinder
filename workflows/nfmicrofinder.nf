@@ -3,7 +3,7 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-include { MICROFINDER_MAP        } from '../subworkflows/local/microfinder_map'
+include { MICROFINDER_MAP            } from '../subworkflows/local/microfinder_map'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -18,12 +18,26 @@ include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_nfmi
 workflow NFMICROFINDER {
 
     take:
-    reference_tuple // channel: path(fasta)
+    reference // channel: path(fasta)
     pep_file // channel: val(pep_file_path)
     scaffold_length_cutoff // channel: val(cutoff)
     main:
 
     ch_versions = Channel.empty()
+
+    // Create channels from reference
+    reference_tuple = reference
+        .map { obj ->
+            def ref = file(obj)
+            def meta = [id: ref.baseName]
+            tuple(meta, ref)
+        }
+        .branch { meta, file ->
+            reference: true
+                return tuple(meta, file)
+            prefix: true
+                return meta.id
+        }
 
     // Set output prefix using params or meta id
     output_prefix = reference_tuple.prefix
