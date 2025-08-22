@@ -71,7 +71,6 @@ workflow PIPELINE_INITIALISATION {
     //
     Channel
         .fromPath(input)
-        .ifEmpty { exit 1, "Cannot find input FASTA file: ${input}" }
         .set { ch_fasta }
 
     Channel
