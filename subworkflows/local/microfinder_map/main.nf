@@ -33,10 +33,9 @@ workflow MICROFINDER_MAP {
     ch_versions = ch_versions.mix( MINIPROT_INDEX.out.versions )
 
     //
-    // Create channel from pep_file and combine with index
+    // Combine with index
     //
-    def pep_ch = (pep_files instanceof groovyx.gpars.dataflow.DataflowReadChannel) ? pep_files : Channel.fromPath(pep_files)
-    pep_ch
+    pep_files
         .map { pf ->
             def f = file(pf)
             def meta = [ id: f.baseName, type: 'protein', org: 'reference' ]
