@@ -43,10 +43,6 @@ workflow NFMICROFINDER {
     output_prefix = reference_tuple.prefix
         .map { id -> params.output_prefix ?: id }
 
-    // Normalize inputs to channels if needed
-    def pep_file_ch = (pep_file instanceof groovyx.gpars.dataflow.DataflowReadChannel) ? pep_file : Channel.value(pep_file)
-    def scaffold_length_cutoff_ch = (scaffold_length_cutoff instanceof groovyx.gpars.dataflow.DataflowReadChannel) ? scaffold_length_cutoff : Channel.value(scaffold_length_cutoff)
-
     MICROFINDER_MAP (
         reference_tuple.reference,
         scaffold_length_cutoff,
