@@ -3,11 +3,12 @@
 
 # usage: ruby sort_fasta.rb -o <id-tab-int> -f <FASTA> [ -l <length> ]
 
-require 'bundler/setup'
 require 'gdbm'
+require 'tempfile'
 require 'yaml'
 require 'bio'
 require 'optparse'
+
 
 Version = '1.1'
 

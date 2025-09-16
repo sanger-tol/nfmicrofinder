@@ -2,15 +2,13 @@ process SORT_FASTA {
     tag "$meta.id"
     label "process_single"
 
-    conda "conda-forge::ruby=2.2.3"
-    container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
-        'https://depot.galaxyproject.org/singularity/ruby:2.2.3--1' :
-        'biocontainers/ruby:2.2.3--1' }"
+    container 'quay.io/sanger-tol/mfruby:1.0.0-c1'
 
     publishDir "${params.outdir}/microfinder", mode: params.publish_dir_mode, pattern: "*.fa"
 
     input:
-    tuple val(meta), path(input_assembly)
+    tuple val(meta), path(input_tsv)
+    path(input_assembly)
     val (output_prefix)
     val (scaffold_length_cutoff)
 
@@ -26,12 +24,11 @@ process SORT_FASTA {
     def prefix      = task.ext.prefix ?: "${meta.id}"
     def VERSION     = "2.2.3"
     """
-    mkdir -p ${params.outdir}/microfinder
-    sort_fasta.rb -f ${input_assembly} -o ${output_prefix}.MicroFinder.order.tsv -l ${scaffold_length_cutoff} > ${output_prefix}.MicroFinder.ordered.fa
+    sort_fasta.rb -f ${input_assembly} -o ${input_tsv} -l ${scaffold_length_cutoff} > ${output_prefix}.MicroFinder.ordered.fa
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        ruby: $VERSION
+        ruby: \$(ruby --version | cut -d' ' -f2)
     END_VERSIONS
     """
 

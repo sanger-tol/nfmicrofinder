@@ -9,9 +9,7 @@ process MICROFINDER_FILTER {
 
     input:
     tuple val(meta), path(input_file)
-    tuple val(meta), path(input_assembly)
     val (output_prefix)
-    val (scaffold_length_cutoff)
 
     output:
     tuple val(meta), path("*.tsv"), emit: tsv
@@ -25,7 +23,7 @@ process MICROFINDER_FILTER {
     def prefix      = task.ext.prefix ?: "${meta.id}"
     def VERSION = "9.1"
     """
-    # Extract scaffold names and counts from PAF file
+    # Extract scaffold names and counts from GFF file
     awk '\$12 >= 60 && \$10/\$11 >= 0.7' ${input_file} | cut -f6 | sort | uniq -c | sort -k1,1nr | awk '{print \$2 "\\t" \$1}' > ${output_prefix}.MicroFinder.order.tsv
 
     cat <<-END_VERSIONS > versions.yml

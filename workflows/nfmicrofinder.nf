@@ -32,19 +32,14 @@ workflow NFMICROFINDER {
             def meta = [id: ref.baseName]
             tuple(meta, ref)
         }
-        .branch { meta, file ->
-            reference: true
-                return tuple(meta, file)
-            prefix: true
-                return meta.id
-        }
 
     // Set output prefix using params or meta id
-    output_prefix = reference_tuple.prefix
-        .map { id -> params.output_prefix ?: id }
+    output_prefix = reference_tuple
+        .map { meta, file -> params.output_prefix ?: meta.id }
+
 
     MICROFINDER_MAP (
-        reference_tuple.reference,
+        reference_tuple,
         scaffold_length_cutoff,
         pep_file,
         output_prefix
@@ -53,7 +48,15 @@ workflow NFMICROFINDER {
     // Mix versions from subworkflow
     ch_versions = ch_versions.mix(MICROFINDER_MAP.out.versions)
 
-    softwareVersionsToYAML(ch_versions)
+    // Only create versions file if there are versions to collect
+    ch_versions
+        .ifEmpty { 
+            log.warn "No software versions collected - creating minimal versions file"
+            Channel.of("pipeline: nfmicrofinder")
+        }
+        .set { ch_versions_final }
+
+    softwareVersionsToYAML(ch_versions_final)
         .collectFile(
             storeDir: "${params.outdir}/pipeline_info",
             name:  'nfmicrofinder_software_'  + 'versions.yml',

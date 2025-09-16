@@ -13,8 +13,8 @@ include { MINIPROT_ALIGN        } from '../../../modules/nf-core/miniprot/align/
 include { MINIPROT_INDEX        } from '../../../modules/nf-core/miniprot/index/main'
 include { SORT_FASTA            } from '../../../modules/local/sort_fasta'
 include { MICROFINDER_FILTER    } from '../../../modules/local/microfinder_filter'
-include { RENAME_EMPTY_OUTPUT   } from '../../../modules/local/rename_empty_output/main'
 include { RENAME_SORTED_OUTPUT  } from '../../../modules/local/rename_sorted_output/main'
+include { RENAME_SORTED_OUTPUT as RENAME_FALLBACK_OUTPUT } from '../../../modules/local/rename_sorted_output/main'
 
 workflow MICROFINDER_MAP {
     take:
@@ -59,51 +59,62 @@ workflow MICROFINDER_MAP {
     ch_versions = ch_versions.mix( MINIPROT_ALIGN.out.versions )
 
 
-    // Branch based on PAF output
-    MINIPROT_ALIGN.out.paf
-        .map { meta, paf_file ->
-            def has_content = file(paf_file).size() > 0
-            tuple(has_content, meta, paf_file)
-        }
-        .combine(reference_tuple)
-        .branch { has_content, meta, paf_file, ref_meta, ref_file ->
-            empty_gff: !has_content
-                return tuple(ref_meta, ref_file)
-            has_content: has_content
-                return tuple(meta, paf_file, ref_meta, ref_file)
-        }
-        .set { gff_output }
+    // Create a simple prefix value from the first available item
+    output_prefix
+        .first()
+        .set { prefix_value }
 
-    // Handle empty GFF case - just rename the original reference
-    RENAME_EMPTY_OUTPUT(gff_output.empty_gff)
-        .fa
-        .set { final_fasta }
-    ch_versions = ch_versions.mix( RENAME_EMPTY_OUTPUT.out.versions )
 
-    // Process PAF content
-    gff_output.has_content
-        .combine(output_prefix)
-        .combine(scaffold_length_cutoff)
-        .set { to_filter }
-
+    // Combine GFF with output prefix for MICROFINDER_FILTER  
+    MINIPROT_ALIGN.out.gff
+        .combine(prefix_value)
+        .set { gff_with_prefix }
+    
     //
     // MODULE: FILTER HITS
     //
     MICROFINDER_FILTER (
-        to_filter.map { meta, paf_file, ref_meta, ref_file, prefix, cutoff -> tuple(meta, paf_file) },
-        to_filter.map { meta, paf_file, ref_meta, ref_file, prefix, cutoff -> tuple(ref_meta, ref_file) },
-        to_filter.map { meta, paf_file, ref_meta, ref_file, prefix, cutoff -> prefix },
-        to_filter.map { meta, paf_file, ref_meta, ref_file, prefix, cutoff -> cutoff }
+        gff_with_prefix.map { meta, gff_file, prefix -> tuple(meta, gff_file) },
+        gff_with_prefix.map { meta, gff_file, prefix -> prefix }
     )
     ch_versions = ch_versions.mix( MICROFINDER_FILTER.out.versions )
 
+    // Check if TSV has content before proceeding with assembly reordering
+    MICROFINDER_FILTER.out.tsv
+        .map { meta, tsv_file ->
+            def file_obj = file(tsv_file)
+            def has_content = false
+            
+            // Check if TSV file exists, has size > 0, and contains data lines
+            if (file_obj.exists() && file_obj.size() > 0) {
+                // Read file and check for non-empty, non-header lines
+                def content_lines = file_obj.readLines().findAll { line -> 
+                    !line.trim().isEmpty() && !line.startsWith('#')
+                }
+                has_content = content_lines.size() > 0
+            }
+            
+            tuple(has_content, meta, tsv_file)
+        }
+        .combine(reference_tuple)
+        .combine(output_prefix)
+        .combine(scaffold_length_cutoff)
+        .branch { has_content, meta, tsv_file, ref_meta, ref_file, prefix, cutoff ->
+            has_content: has_content
+                return tuple(meta, tsv_file, ref_meta, ref_file, prefix, cutoff)
+            no_content: !has_content
+                return tuple(ref_meta, ref_file)
+        }
+        .set { tsv_branched }
+
     //
-    // MODULE: REORDER ASSEMBLY
+    // MODULE: REORDER ASSEMBLY (only if TSV has content)
     //
     SORT_FASTA (
-        MICROFINDER_FILTER.out.tsv,
-        output_prefix,
-        scaffold_length_cutoff
+        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file, prefix, cutoff -> tuple(meta, tsv_file) },
+        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file, prefix, cutoff -> ref_file },
+        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file, prefix, cutoff -> prefix },
+        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file, prefix, cutoff -> cutoff }
     )
     ch_versions = ch_versions.mix(SORT_FASTA.out.versions)
 
@@ -113,10 +124,16 @@ workflow MICROFINDER_MAP {
         .set { ch_sorted_fasta }
     ch_versions = ch_versions.mix( RENAME_SORTED_OUTPUT.out.versions )
 
-    // Mix sorted fasta with reference fasta (for empty GFF case)
-    sorted_fasta = ch_sorted_fasta.mix(final_fasta)
+    // For cases where TSV has no content, rename original reference to final.fa
+    RENAME_FALLBACK_OUTPUT(tsv_branched.no_content)
+        .fa
+        .set { ch_tsv_fallback_fasta }
+    ch_versions = ch_versions.mix( RENAME_FALLBACK_OUTPUT.out.versions )
+
+    // Combine sorted fasta with TSV fallback, or use reference if no processing occurred
+    sorted_fasta = ch_sorted_fasta.mix(ch_tsv_fallback_fasta).ifEmpty(reference_tuple)
 
     emit:
     sorted_fasta = sorted_fasta
-    versions = ch_versions.ifEmpty(null)
+    versions = ch_versions
 }
