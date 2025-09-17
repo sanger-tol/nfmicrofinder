@@ -50,7 +50,7 @@ workflow NFMICROFINDER {
 
     // Only create versions file if there are versions to collect
     ch_versions
-        .ifEmpty { 
+        .ifEmpty {
             log.warn "No software versions collected - creating minimal versions file"
             Channel.of("pipeline: nfmicrofinder")
         }

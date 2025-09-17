@@ -65,11 +65,11 @@ workflow MICROFINDER_MAP {
         .set { prefix_value }
 
 
-    // Combine GFF with output prefix for MICROFINDER_FILTER  
+    // Combine GFF with output prefix for MICROFINDER_FILTER
     MINIPROT_ALIGN.out.gff
         .combine(prefix_value)
         .set { gff_with_prefix }
-    
+
     //
     // MODULE: FILTER HITS
     //
@@ -84,16 +84,16 @@ workflow MICROFINDER_MAP {
         .map { meta, tsv_file ->
             def file_obj = file(tsv_file)
             def has_content = false
-            
+
             // Check if TSV file exists, has size > 0, and contains data lines
             if (file_obj.exists() && file_obj.size() > 0) {
                 // Read file and check for non-empty, non-header lines
-                def content_lines = file_obj.readLines().findAll { line -> 
+                def content_lines = file_obj.readLines().findAll { line ->
                     !line.trim().isEmpty() && !line.startsWith('#')
                 }
                 has_content = content_lines.size() > 0
             }
-            
+
             tuple(has_content, meta, tsv_file)
         }
         .combine(reference_tuple)
