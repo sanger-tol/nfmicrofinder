@@ -39,6 +39,12 @@
                     "help_text": "Scaffolds shorter than this length may be deprioritized or filtered depending on the workflow step.",
                     "fa_icon": "fas fa-ruler"
                 },
+                "output_prefix": {
+                    "type": "string",
+                    "description": "Prefix for output files. If not specified, uses input filename basename.",
+                    "help_text": "This prefix will be used for naming the final output files from the microfinder analysis.",
+                    "fa_icon": "fas fa-tag"
+                },
                 "outdir": {
                     "type": "string",
                     "format": "directory-path",

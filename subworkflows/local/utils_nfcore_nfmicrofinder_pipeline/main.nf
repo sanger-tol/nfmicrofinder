@@ -34,6 +34,7 @@ workflow PIPELINE_INITIALISATION {
     input             //  string: Path to input FASTA file
     pep_file          //  string: Path to protein FASTA file
     scaffold_length_cutoff // integer: Maximum length cutoff for scaffold consideration
+    output_prefix     //  string: Prefix for output files
 
     main:
 
@@ -82,10 +83,15 @@ workflow PIPELINE_INITIALISATION {
         .value(scaffold_length_cutoff)
         .set { ch_scaffold_length_cutoff }
 
+    Channel
+        .value(output_prefix)
+        .set { ch_output_prefix }
+
     emit:
     fasta = ch_fasta
     pep_file = ch_pep_file
     scaffold_length_cutoff = ch_scaffold_length_cutoff
+    output_prefix = ch_output_prefix
     versions = ch_versions
 }
 

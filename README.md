@@ -22,10 +22,11 @@ The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool
 ## Pipeline Summary
 
 1.  Input validation and parameter checks
-2.  Align protein sequences to genome using Miniprot
-3.  Filter alignments based on scaffold length
-4.  Sort FASTA file based on filtered alignments
-5.  Generate pipeline reports and logs
+2.  Index reference genome using Miniprot
+3.  Align protein sequences to genome using Miniprot
+4.  Filter alignments based on quality thresholds (identity ≥70%, score ≥60)
+5.  Sort FASTA file based on filtered alignments to prioritize microchromosomes
+6.  Generate final reordered assembly and pipeline reports
 
 ## Quick Start
 
@@ -44,7 +45,11 @@ The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool
 4.  Start running your own analysis!
 
     ```bash
-    nextflow run main.nf --input genome.fa --outdir <OUTDIR>
+    nextflow run main.nf \
+        --input genome.fa \
+        --pep_file proteins.fa \
+        --output_prefix my_analysis \
+        --outdir <OUTDIR>
     ```
 
 ## Documentation

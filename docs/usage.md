@@ -4,7 +4,9 @@
 
 > _Documentation of pipeline parameters is generated automatically from the pipeline schema and can no longer be found in markdown files._
 
-**nfmicrofinder** is a bioinformatics pipeline that aids in the curation of bird genome assemblies by identifying putative microchromosome scaffolds and moving them to the start of the genome assembly FASTA file.
+**nfmicrofinder** is a bioinformatics pipeline that aids in the curation of bird genome assemblies by identifying putative microchromosome scaffolds using protein alignments and reordering them to the start of the genome assembly FASTA file.
+
+The pipeline uses Miniprot to align a curated set of bird proteins to the genome, filters high-quality alignments, and reorders scaffolds based on the density of protein matches - prioritizing scaffolds with more protein alignments (likely microchromosomes) at the beginning of the assembly.
 
 The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies.
 
@@ -29,6 +31,8 @@ nextflow run main.nf \
    -profile <docker/singularity/podman/shifter/charliecloud/conda/institute> \
    --input genome.fa \
    --pep_file proteins.fa \
+   --output_prefix my_analysis \
+   --scaffold_length_cutoff 5000000 \
    --outdir <OUTDIR>
 ```
 
@@ -115,6 +119,29 @@ nextflow run main.nf -profile docker --input bGalGal4.fa
 ### `--outdir`
 
 The output directory where the results will be saved.
+
+### `--output_prefix`
+
+Prefix for output files. If not specified, uses the input filename basename.
+
+**Example:**
+```bash
+--output_prefix bAytFul3  # Creates bAytFul3.MicroFinder.ordered.fa
+```
+
+### `--pep_file`
+
+Path to protein FASTA file used for alignment (e.g. UniProt or predicted proteins).
+
+**Default:** MicroFinder protein set v0.1 for bird microchromosome detection
+**Supported formats:** .fa, .faa, .fasta (with optional .gz compression)
+
+### `--scaffold_length_cutoff`
+
+Minimum scaffold length to consider for filtering and sorting (in bases).
+
+**Default:** 5000000 (5 Mbp)
+**Purpose:** Scaffolds shorter than this may be deprioritized in the final assembly ordering
 
 ### `--email`
 
