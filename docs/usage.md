@@ -125,6 +125,7 @@ The output directory where the results will be saved.
 Prefix for output files. If not specified, uses the input filename basename.
 
 **Example:**
+
 ```bash
 --output_prefix bAytFul3  # Creates bAytFul3.MicroFinder.ordered.fa
 ```
