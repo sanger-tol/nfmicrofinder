@@ -26,10 +26,7 @@
                 "miniprot",
                 "miniprot/MicroFinder_prot_set.v0.1.fa_aligned.gff",
                 "miniprot/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.mpi",
-                [
-                    "execution_trace_2025-09-16_21-19-59.txt:md5,8ad4a81ac400f067841cbfb3f18e6889",
-                    "params_2025-09-16_21-20-05.json:md5,9d287b14ba2040c988b7d5ec3209a6c4"
-                ],
+                "pipeline_info",
                 "pipeline_info/nfmicrofinder_software_versions.yml"
             ],
             [
@@ -43,6 +40,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-09-23T22:07:40.59490712"
+        "timestamp": "2025-09-23T22:57:47.896102184"
     }
 }
