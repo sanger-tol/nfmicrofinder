@@ -3,7 +3,7 @@
     IMPORT MODULES / SUBWORKFLOWS / FUNCTIONS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-include { MICROFINDER_MAP            } from '../subworkflows/local/microfinder_map'
+include { MICROFINDER_MAP        } from '../subworkflows/local/microfinder_map'
 include { paramsSummaryMap       } from 'plugin/nf-schema'
 include { paramsSummaryMultiqc   } from '../subworkflows/nf-core/utils_nfcore_pipeline'
 include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pipeline'
@@ -21,6 +21,7 @@ workflow NFMICROFINDER {
     reference // channel: path(fasta)
     pep_file // channel: val(pep_file_path)
     scaffold_length_cutoff // channel: val(cutoff)
+    output_prefix_ch // channel: val(prefix)
     main:
 
     ch_versions = Channel.empty()
@@ -33,16 +34,11 @@ workflow NFMICROFINDER {
             tuple(meta, ref)
         }
 
-    // Set output prefix using params or meta id
-    output_prefix = reference_tuple
-        .map { meta, file -> params.output_prefix ?: meta.id }
-
-
     MICROFINDER_MAP (
         reference_tuple,
         scaffold_length_cutoff,
         pep_file,
-        output_prefix
+        output_prefix_ch
     )
 
     // Mix versions from subworkflow

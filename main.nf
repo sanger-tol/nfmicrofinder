@@ -31,6 +31,7 @@ workflow SANGERTOL_NFMICROFINDER {
     reference // channel: path(fasta)
     pep_file // channel: val(pep_file_path)
     scaffold_length_cutoff // channel: val(cutoff)
+    output_prefix // channel: val(prefix)
 
     main:
 
@@ -40,7 +41,8 @@ workflow SANGERTOL_NFMICROFINDER {
     NFMICROFINDER (
         reference,
         pep_file,
-        scaffold_length_cutoff
+        scaffold_length_cutoff,
+        output_prefix
     )
 }
 /*
@@ -63,7 +65,8 @@ workflow {
         params.outdir,
         params.input,
         params.pep_file,
-        params.scaffold_length_cutoff
+        params.scaffold_length_cutoff,
+        params.output_prefix
     )
 
     //
@@ -72,7 +75,8 @@ workflow {
     SANGERTOL_NFMICROFINDER (
         PIPELINE_INITIALISATION.out.fasta,
         PIPELINE_INITIALISATION.out.pep_file,
-        PIPELINE_INITIALISATION.out.scaffold_length_cutoff
+        PIPELINE_INITIALISATION.out.scaffold_length_cutoff,
+        PIPELINE_INITIALISATION.out.output_prefix
     )
     //
     // SUBWORKFLOW: Run completion tasks

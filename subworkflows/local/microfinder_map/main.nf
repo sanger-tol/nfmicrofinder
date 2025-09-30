@@ -59,23 +59,12 @@ workflow MICROFINDER_MAP {
     ch_versions = ch_versions.mix( MINIPROT_ALIGN.out.versions )
 
 
-    // Create a simple prefix value from the first available item
-    output_prefix
-        .first()
-        .set { prefix_value }
-
-
-    // Combine GFF with output prefix for MICROFINDER_FILTER
-    MINIPROT_ALIGN.out.gff
-        .combine(prefix_value)
-        .set { gff_with_prefix }
-
     //
     // MODULE: FILTER HITS
     //
     MICROFINDER_FILTER (
-        gff_with_prefix.map { meta, gff_file, prefix -> tuple(meta, gff_file) },
-        gff_with_prefix.map { meta, gff_file, prefix -> prefix }
+        MINIPROT_ALIGN.out.gff,
+        output_prefix
     )
     ch_versions = ch_versions.mix( MICROFINDER_FILTER.out.versions )
 
@@ -97,11 +86,9 @@ workflow MICROFINDER_MAP {
             tuple(has_content, meta, tsv_file)
         }
         .combine(reference_tuple)
-        .combine(output_prefix)
-        .combine(scaffold_length_cutoff)
-        .branch { has_content, meta, tsv_file, ref_meta, ref_file, prefix, cutoff ->
+        .branch { has_content, meta, tsv_file, ref_meta, ref_file ->
             has_content: has_content
-                return tuple(meta, tsv_file, ref_meta, ref_file, prefix, cutoff)
+                return tuple(meta, tsv_file, ref_meta, ref_file)
             no_content: !has_content
                 return tuple(ref_meta, ref_file)
         }
@@ -111,10 +98,10 @@ workflow MICROFINDER_MAP {
     // MODULE: REORDER ASSEMBLY (only if TSV has content)
     //
     SORT_FASTA (
-        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file, prefix, cutoff -> tuple(meta, tsv_file) },
-        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file, prefix, cutoff -> ref_file },
-        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file, prefix, cutoff -> prefix },
-        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file, prefix, cutoff -> cutoff }
+        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file -> tuple(meta, tsv_file) },
+        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file -> ref_file },
+        output_prefix,
+        scaffold_length_cutoff
     )
     ch_versions = ch_versions.mix(SORT_FASTA.out.versions)
 

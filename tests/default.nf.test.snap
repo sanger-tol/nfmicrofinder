@@ -21,7 +21,7 @@
             },
             [
                 "microfinder",
-                "microfinder/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.MicroFinder.order.tsv",
+                "microfinder/bTaeGut1.MicroFinder.order.tsv",
                 "microfinder/final.fa",
                 "miniprot",
                 "miniprot/MicroFinder_prot_set.v0.1.fa_aligned.gff",
@@ -30,7 +30,7 @@
                 "pipeline_info/nfmicrofinder_software_versions.yml"
             ],
             [
-                "Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.MicroFinder.order.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
+                "bTaeGut1.MicroFinder.order.tsv:md5,d41d8cd98f00b204e9800998ecf8427e",
                 "final.fa:md5,cef9ba9b0ee7934e24dbc8888f901966",
                 "MicroFinder_prot_set.v0.1.fa_aligned.gff:md5,10b706880b50e0df5ae0459a7213e07a",
                 "Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.mpi:md5,b5825c8386cc3338685902e999e7088c"
@@ -40,6 +40,6 @@
             "nf-test": "0.9.2",
             "nextflow": "25.04.6"
         },
-        "timestamp": "2025-09-16T21:12:16.854539944"
+        "timestamp": "2025-09-23T22:57:47.896102184"
     }
 }
