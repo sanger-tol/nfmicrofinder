@@ -1,4 +1,4 @@
-# sanger-tol/nfmicrofinder
+# nf-core/nfmicrofinder
 
 [![Open in GitHub Codespaces](https://img.shields.io/badge/Open_In_GitHub_Codespaces-black?labelColor=grey&logo=github)](https://github.com/codespaces/new/sanger-tol/nfmicrofinder)
 [![GitHub Actions CI Status](https://github.com/sanger-tol/nfmicrofinder/actions/workflows/nf-test.yml/badge.svg)](https://github.com/sanger-tol/nfmicrofinder/actions/workflows/nf-test.yml)
@@ -10,64 +10,60 @@
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/en/latest/)
 [![run with docker](https://img.shields.io/badge/run%20with-docker-0db7ed?labelColor=000000&logo=docker)](https://www.docker.com/)
 [![run with singularity](https://img.shields.io/badge/run%20with-singularity-1d355c.svg?labelColor=000000)](https://sylabs.io/docs/)
-[![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/sanger-tol/nfmicrofinder)
+[![Launch on Seqera Platform](https://img.shields.io/badge/Launch%20%F0%9F%9A%80-Seqera%20Platform-%234256e7)](https://cloud.seqera.io/launch?pipeline=https://github.com/nf-core/nfmicrofinder)
+
+[![Get help on Slack](http://img.shields.io/badge/slack-nf--core%20%23nfmicrofinder-4A154B?labelColor=000000&logo=slack)](https://nfcore.slack.com/channels/nfmicrofinder)[![Follow on Bluesky](https://img.shields.io/badge/bluesky-%40nf__core-1185fe?labelColor=000000&logo=bluesky)](https://bsky.app/profile/nf-co.re)[![Follow on Mastodon](https://img.shields.io/badge/mastodon-nf__core-6364ff?labelColor=FFFFFF&logo=mastodon)](https://mstdn.science/@nf_core)[![Watch on YouTube](http://img.shields.io/badge/youtube-nf--core-FF0000?labelColor=000000&logo=youtube)](https://www.youtube.com/c/nf-core)
 
 ## Introduction
 
-**sanger-tol/nfmicrofinder** is a bioinformatics pipeline that ...
+**nf-core/nfmicrofinder** is a bioinformatics pipeline that aids in the curation of bird genome assemblies by identifying putative microchromosome scaffolds and moving them to the start of the genome assembly FASTA file.
 
-<!-- TODO nf-core:
-   Complete this sentence with a 2-3 sentence summary of what types of data the pipeline ingests, a brief overview of the
-   major pipeline sections and the types of output it produces. You're giving an overview to someone new
-   to nf-core here, in 15-20 seconds. For an example, see https://github.com/nf-core/rnaseq/blob/master/README.md#introduction
--->
+The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool to run tasks across multiple compute infrastructures in a very portable manner. It uses Docker/Singularity containers making installation trivial and results highly reproducible. The [Nextflow DSL2](https://www.nextflow.io/docs/latest/dsl2.html) implementation of this pipeline uses one container per process which makes it much easier to maintain and update software dependencies.
 
-<!-- TODO nf-core: Include a figure that guides the user through the major workflow steps. Many nf-core
-     workflows use the "tube map" design for that. See https://nf-co.re/docs/guidelines/graphic_design/workflow_diagrams#examples for examples.   -->
-<!-- TODO nf-core: Fill in short bullet-pointed list of the default steps in the pipeline -->
+## Pipeline Summary
 
-## Usage
+1.  Input validation and parameter checks
+2.  Index reference genome using Miniprot
+3.  Align protein sequences to genome using Miniprot
+4.  Filter alignments based on quality thresholds (identity ≥70%, score ≥60)
+5.  Sort FASTA file based on filtered alignments to prioritize microchromosomes
+6.  Generate final reordered assembly and pipeline reports
 
-> [!NOTE]
-> If you are new to Nextflow and nf-core, please refer to [this page](https://nf-co.re/docs/usage/installation) on how to set-up Nextflow. Make sure to [test your setup](https://nf-co.re/docs/usage/introduction#how-to-run-a-pipeline) with `-profile test` before running the workflow on actual data.
+## Quick Start
 
-<!-- TODO nf-core: Describe the minimum required steps to execute the pipeline, e.g. how to prepare samplesheets.
-     Explain what rows and columns represent. For instance (please edit as appropriate):
+1.  Install [`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#installation) (`>=24.10.5`)
 
-First, prepare a samplesheet with your input data that looks as follows:
+2.  Install any of [`Docker`](https://docs.docker.com/engine/installation/), [`Singularity`](https://www.sylabs.io/guides/3.0/user-guide/), [`Podman`](https://podman.io/), [`Shifter`](https://nersc.gitlab.io/development/shifter/how-to-use/) or [`Charliecloud`](https://hpc.github.io/charliecloud/) for full pipeline reproducibility _(please only use [`Conda`](https://conda.io/miniconda.html) as a last resort; see [docs](https://nf-co.re/usage/configuration#basic-configuration-profiles))_
 
-`samplesheet.csv`:
+3.  Download the pipeline and test it on a minimal dataset with a single command:
 
-```csv
-sample,fastq_1,fastq_2
-CONTROL_REP1,AEG588A1_S1_L002_R1_001.fastq.gz,AEG588A1_S1_L002_R2_001.fastq.gz
-```
+    ```bash
+    nextflow run main.nf -profile test,docker
+    ```
 
-Each row represents a fastq file (single-end) or a pair of fastq files (paired end).
+    > Note that it is recommend to use the `-profile` parameter to specify the container technology of your choice. See the [nf-core pipeline documentation](https://nf-co.re/usage/running#software-dependencies) for more information.
 
--->
+4.  Start running your own analysis!
 
-Now, you can run the pipeline using:
+    ```bash
+    nextflow run main.nf \
+        --input genome.fa \
+        --pep_file proteins.fa \
+        --output_prefix my_analysis \
+        --outdir <OUTDIR>
+    ```
 
-<!-- TODO nf-core: update the following command to include all required parameters for a minimal example -->
+## Documentation
 
-```bash
-nextflow run sanger-tol/nfmicrofinder \
-   -profile <docker/singularity/.../institute> \
-   --input samplesheet.csv \
-   --outdir <OUTDIR>
-```
-
-> [!WARNING]
-> Please provide pipeline parameters via the CLI or Nextflow `-params-file` option. Custom config files including those provided by the `-c` Nextflow option can be used to provide any configuration _**except for parameters**_; see [docs](https://nf-co.re/docs/usage/getting_started/configuration#custom-configuration-files).
+The nfmicrofinder pipeline comes with documentation about the pipeline [usage](docs/usage.md) and [output](docs/output.md).
 
 ## Credits
 
-sanger-tol/nfmicrofinder was originally written by yumisims.
+nfmicrofinder was originally written by Yumi Sims and Will Eagle ([@weaglesBio](https://github.com/weaglesBio)).
 
 We thank the following people for their extensive assistance in the development of this pipeline:
 
-<!-- TODO nf-core: If applicable, make list of people who have also contributed -->
+- Jim Downie ([@prototaxites](https://github.com/prototaxites))
 
 ## Contributions and Support
 
@@ -75,14 +71,9 @@ If you would like to contribute to this pipeline, please see the [contributing g
 
 ## Citations
 
-<!-- TODO nf-core: Add citation for pipeline after first release. Uncomment lines below and update Zenodo doi and badge at the top of this file. -->
-<!-- If you use sanger-tol/nfmicrofinder for your analysis, please cite it using the following doi: [10.5281/zenodo.XXXXXX](https://doi.org/10.5281/zenodo.XXXXXX) -->
-
-<!-- TODO nf-core: Add bibliography of tools and data used in your pipeline -->
-
 An extensive list of references for the tools used by the pipeline can be found in the [`CITATIONS.md`](CITATIONS.md) file.
 
-This pipeline uses code and infrastructure developed and maintained by the [nf-core](https://nf-co.re) community, reused here under the [MIT license](https://github.com/nf-core/tools/blob/main/LICENSE).
+You can cite the `nf-core` publication as follows:
 
 > **The nf-core framework for community-curated bioinformatics pipelines.**
 >

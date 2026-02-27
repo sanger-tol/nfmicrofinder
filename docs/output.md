@@ -1,4 +1,4 @@
-# sanger-tol/nfmicrofinder: Output
+# nf-core/nfmicrofinder: Output
 
 ## Introduction
 
