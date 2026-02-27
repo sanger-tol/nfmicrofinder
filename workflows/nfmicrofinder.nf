@@ -16,7 +16,6 @@ include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_nfmi
 */
 
 workflow NFMICROFINDER {
-
     take:
     reference // channel: path(fasta)
     pep_file // channel: val(pep_file_path)
@@ -24,7 +23,7 @@ workflow NFMICROFINDER {
     output_prefix_ch // channel: val(prefix)
     main:
 
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     // Create channels from reference
     reference_tuple = reference
@@ -48,7 +47,7 @@ workflow NFMICROFINDER {
     ch_versions
         .ifEmpty {
             log.warn "No software versions collected - creating minimal versions file"
-            Channel.of("pipeline: nfmicrofinder")
+            channel.of("pipeline: nfmicrofinder")
         }
         .set { ch_versions_final }
 

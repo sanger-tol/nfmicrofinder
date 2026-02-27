@@ -56,6 +56,21 @@ The pipeline is built using [Nextflow](https://www.nextflow.io), a workflow tool
 
 The nfmicrofinder pipeline comes with documentation about the pipeline [usage](docs/usage.md) and [output](docs/output.md).
 
+## Development
+
+For strict syntax validation you can run the helper script included in the
+`scripts/` directory. It sets `NXF_SYNTAX_PARSER=v2` and then invokes
+`nextflow lint` (or any other Nextflow command you supply):
+
+```bash
+chmod +x scripts/strict-lint.sh
+./scripts/strict-lint.sh         # run linter
+./scripts/strict-lint.sh run     # or any other command
+```
+
+This is useful when preparing for strict-syntax pipelines or when running the
+Nextflow language server outside of an IDE.
+
 ## Credits
 
 nfmicrofinder was originally written by Yumi Sims and Will Eagle ([@weaglesBio](https://github.com/weaglesBio)).

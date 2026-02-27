@@ -24,7 +24,7 @@ workflow MICROFINDER_MAP {
     output_prefix      // Channel: val(prefix)
 
     main:
-    ch_versions = Channel.empty()
+    ch_versions = channel.empty()
 
     //
     // MODULE: CREATES INDEX OF REFERENCE FILE
@@ -42,7 +42,7 @@ workflow MICROFINDER_MAP {
             tuple(meta, f)
         }
         .combine(MINIPROT_INDEX.out.index)
-        .multiMap { pep_meta, pep_file, miniprot_meta, miniprot_index ->
+        .multiMap { pep_meta, pep_file, _miniprot_meta, miniprot_index ->
             pep_tuple: tuple(pep_meta, pep_file)
             index_file: tuple([id: "Reference"], miniprot_index)
         }
@@ -98,8 +98,8 @@ workflow MICROFINDER_MAP {
     // MODULE: REORDER ASSEMBLY (only if TSV has content)
     //
     SORT_FASTA (
-        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file -> tuple(meta, tsv_file) },
-        tsv_branched.has_content.map { meta, tsv_file, ref_meta, ref_file -> ref_file },
+        tsv_branched.has_content.map { meta, tsv_file, _ref_meta, _ref_file -> tuple(meta, tsv_file) },
+        tsv_branched.has_content.map { _meta, _tsv_file, _ref_meta, ref_file -> ref_file },
         output_prefix,
         scaffold_length_cutoff
     )

@@ -26,7 +26,6 @@ include { PIPELINE_COMPLETION     } from './subworkflows/local/utils_nfcore_nfmi
 // WORKFLOW: Run main analysis pipeline depending on type of input
 //
 workflow SANGERTOL_NFMICROFINDER {
-
     take:
     reference // channel: path(fasta)
     pep_file // channel: val(pep_file_path)
@@ -52,7 +51,6 @@ workflow SANGERTOL_NFMICROFINDER {
 */
 
 workflow {
-
     main:
     //
     // SUBWORKFLOW: Run initialisation tasks
