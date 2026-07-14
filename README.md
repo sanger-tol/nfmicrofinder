@@ -63,7 +63,6 @@ For strict syntax validation you can run the helper script included in the
 `nextflow lint` (or any other Nextflow command you supply):
 
 ```bash
-chmod +x scripts/strict-lint.sh
 ./scripts/strict-lint.sh         # run linter
 ./scripts/strict-lint.sh run     # or any other command
 ```
