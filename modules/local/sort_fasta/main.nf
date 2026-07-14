@@ -41,7 +41,7 @@ process SORT_FASTA {
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        ruby: $_VERSION
+        ruby: \$(ruby --version | cut -d' ' -f2)
     END_VERSIONS
     """
 }
