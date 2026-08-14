@@ -64,7 +64,10 @@ workflow {
         params.input,
         params.pep_file,
         params.scaffold_length_cutoff,
-        params.output_prefix
+        params.output_prefix,
+        params.help,
+        params.help_full,
+        params.show_hidden
     )
 
     //
