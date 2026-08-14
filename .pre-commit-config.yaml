@@ -12,6 +12,8 @@ repos:
         args: [--markdown-linebreak-ext=md]
         exclude: |
           (?x)^(
+              .*\.hmm$|
+              .*\.cm$|
               .*ro-crate-metadata.json$|
               modules/(?!local/).*|
               subworkflows/(?!local/).*|
@@ -20,6 +22,7 @@ repos:
       - id: end-of-file-fixer
         exclude: |
           (?x)^(
+              .*\.svg$|
               .*ro-crate-metadata.json$|
               modules/(?!local/).*|
               subworkflows/(?!local/).*|

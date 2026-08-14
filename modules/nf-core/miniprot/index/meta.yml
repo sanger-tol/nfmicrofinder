@@ -1,0 +1,51 @@
+name: miniprot_index
+description: Provides fasta index required by miniprot alignment.
+keywords:
+  - index
+  - fasta
+  - genome
+  - reference
+tools:
+  - miniprot:
+      description: |
+        A versatile pairwise aligner for genomic and protein sequences.
+      homepage: https://github.com/lh3/miniprot
+      documentation: https://github.com/lh3/miniprot
+      licence: ["MIT"]
+      identifier: biotools:miniprot
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. [ id:'test', single_end:false ]
+    - fasta:
+        type: file
+        description: |
+          Reference database in FASTA format.
+        ontologies: []
+output:
+  index:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. [ id:'test', single_end:false ]
+      - "*.mpi":
+          type: file
+          description: miniprot fasta index.
+          pattern: "*.mpi"
+          ontologies: []
+  versions:
+    - versions.yml:
+        type: file
+        description: File containing software versions
+        pattern: "versions.yml"
+        ontologies:
+          - edam: http://edamontology.org/format_3750 # YAML
+authors:
+  - "@yumisims"
+  - "@muffato"
+maintainers:
+  - "@yumisims"
+  - "@muffato"
