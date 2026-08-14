@@ -18,7 +18,7 @@
                     "ruby": "3.2.6"
                 },
                 "Workflow": {
-                    "sanger-tol/nfmicrofinder": "v1.0.0"
+                    "sanger-tol/nfmicrofinder": "v1.0.1"
                 }
             },
             [
