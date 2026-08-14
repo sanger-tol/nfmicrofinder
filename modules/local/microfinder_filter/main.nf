@@ -19,8 +19,6 @@ process MICROFINDER_FILTER {
     task.ext.when == null || task.ext.when
 
     script:
-    def _args        = task.ext.args ?: ''
-    def _prefix      = task.ext.prefix ?: "${meta.id}"
     def VERSION = "9.1"
     """
     # Extract scaffold names and counts from GFF file
@@ -32,11 +30,10 @@ process MICROFINDER_FILTER {
     END_VERSIONS
     """
     stub:
-    def _args        = task.ext.args ?: ''
-    def _prefix      = task.ext.prefix ?: "${meta.id}"
+    def prefix      = task.ext.prefix ?: "${meta.id}"
     def VERSION     = "9.1"
     """
-    touch ${_prefix}.MicroFinder.filtered.tsv
+    touch ${prefix}.MicroFinder.filtered.tsv
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
