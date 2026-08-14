@@ -16,7 +16,6 @@ include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_nfmi
 */
 
 workflow NFMICROFINDER {
-
     take:
     reference // channel: path(fasta)
     pep_file // channel: val(pep_file_path)
@@ -43,10 +42,11 @@ workflow NFMICROFINDER {
 
     // Mix versions from subworkflow
     ch_versions = ch_versions.mix(MICROFINDER_MAP.out.versions)
+
     //
     // Collate and save software versions
     //
-    def topic_versions = Channel.topic("versions")
+    def topic_versions = channel.topic("versions")
         .distinct()
         .branch { entry ->
             versions_file: entry instanceof Path
