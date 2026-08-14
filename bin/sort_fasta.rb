@@ -10,11 +10,12 @@ require 'bio'
 require 'optparse'
 
 
-Version = '1.1'
+VERSION = '1.1'
 
 options = {}
 OptionParser.new do |opts|
   opts.banner = 'Usage: sort_fasta.rb [options]'
+  opts.version = VERSION
 
   opts.on('-f FASTA', '--fasta FASTA', String, 'FASTA file')
   opts.on('-o TSV', '--order TSV', String, 'TSV file with sort order')
