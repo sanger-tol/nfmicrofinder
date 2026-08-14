@@ -28,7 +28,7 @@ workflow PIPELINE_INITIALISATION {
     take:
     version           // boolean: Display version and exit
     validate_params   // boolean: Boolean whether to validate parameters against the schema at runtime
-    monochrome_logs   // boolean: Do not use coloured log outputs
+    monochrome_logs   // boolean: Do not use coloured log outputs (unused)
     nextflow_cli_args //   array: List of positional nextflow CLI args
     outdir            //  string: The output directory where the results will be saved
     input             //  string: Path to input FASTA file
@@ -89,20 +89,20 @@ workflow PIPELINE_INITIALISATION {
     //
     // Create channels from input files
     //
-    Channel
+    channel
         .fromPath(input)
         .set { ch_fasta }
 
-    Channel
+    channel
         .fromPath(pep_file)
         .first()
         .set { ch_pep_file }
 
-    Channel
+    channel
         .value(scaffold_length_cutoff)
         .set { ch_scaffold_length_cutoff }
 
-    Channel
+    channel
         .value(output_prefix)
         .set { ch_output_prefix }
 

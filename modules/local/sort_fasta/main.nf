@@ -20,9 +20,6 @@ process SORT_FASTA {
     task.ext.when == null || task.ext.when
 
     script:
-    def args        = task.ext.args ?: ''
-    def prefix      = task.ext.prefix ?: "${meta.id}"
-    def VERSION     = "2.2.3"
     """
     sort_fasta.rb -f ${input_assembly} -o ${input_tsv} -l ${scaffold_length_cutoff} > ${output_prefix}.MicroFinder.ordered.fa
 
@@ -33,15 +30,12 @@ process SORT_FASTA {
     """
 
     stub:
-    def args        = task.ext.args ?: ''
-    def prefix      = task.ext.prefix ?: "${meta.id}"
-    def VERSION     = "2.2.3"
     """
     touch ${output_prefix}.MicroFinder.ordered.fa
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        ruby: $VERSION
+        ruby: \$(ruby --version | cut -d' ' -f2)
     END_VERSIONS
     """
 }
