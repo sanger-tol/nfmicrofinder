@@ -9,7 +9,7 @@ nextflow_pipeline {
         when {
             params {
                 outdir = "$outputDir"
-                input = "https://ftp.ensembl.org/pub/release-114/fasta/taeniopygia_guttata/dna/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa.gz"
+                input = "https://tolit.cog.sanger.ac.uk/test-data/Taeniopygia_guttata/Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.fa"
                 pep_file = "https://tolit.cog.sanger.ac.uk/test-data/birds_protein/MicroFinder_prot_set.v0.1.fa.gz"
                 scaffold_length_cutoff = 500000
                 output_prefix = "bTaeGut1"
