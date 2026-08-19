@@ -18,12 +18,12 @@ authors:
     orcid: https://orcid.org/0000-0003-4765-4872
     website: https://github.com/yumisims
 cff-version: 1.2.0
-date-released: "2025-08-25"
+date-released: "2026-08-14"
 license: MIT
 message: If you use this software, please cite it using the metadata from this file
-  and all references from CITATIONS.md .
+  and all references from CITATIONS.md.
 repository-code: https://github.com/sanger-tol/nfmicrofinder
-title: sanger-tol/nfmicrofinder v1.0.0
+title: sanger-tol/nfmicrofinder v1.0.1
 type: software
 url: https://pipelines.tol.sanger.ac.uk/nfmicrofinder
-version: 1.0.0
+version: 1.0.1
