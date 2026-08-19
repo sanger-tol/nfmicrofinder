@@ -1,7 +1,6 @@
 {
     "Test pipeline with default parameters": {
         "content": [
-            5,
             {
                 "MICROFINDER_FILTER": {
                     "coreutils": 9.1
@@ -19,7 +18,7 @@
                     "ruby": "3.2.6"
                 },
                 "Workflow": {
-                    "sanger-tol/nfmicrofinder": "v1.0.0"
+                    "sanger-tol/nfmicrofinder": "v1.0.1"
                 }
             },
             [
@@ -41,7 +40,7 @@
                 "Taeniopygia_guttata.bTaeGut1_v1.p.dna.primary_assembly.1.mpi:md5,b5825c8386cc3338685902e999e7088c"
             ]
         ],
-        "timestamp": "2026-08-14T16:12:25.931180689",
+        "timestamp": "2026-08-14T16:32:01.205830016",
         "meta": {
             "nf-test": "0.9.5",
             "nextflow": "26.04.0"

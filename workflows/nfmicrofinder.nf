@@ -21,9 +21,11 @@ workflow NFMICROFINDER {
     pep_file // channel: val(pep_file_path)
     scaffold_length_cutoff // channel: val(cutoff)
     output_prefix_ch // channel: val(prefix)
+    outdir
+
     main:
 
-    ch_versions = channel.empty()
+    def ch_versions = channel.empty()
 
     // Create channels from reference
     reference_tuple = reference
@@ -63,14 +65,14 @@ workflow NFMICROFINDER {
             "${process}:\n${tool_versions.join('\n')}"
         }
 
-    softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
+    def ch_collated_versions = softwareVersionsToYAML(ch_versions.mix(topic_versions.versions_file))
         .mix(topic_versions_string)
         .collectFile(
-            storeDir: "${params.outdir}/pipeline_info",
+            storeDir: "${outdir}/pipeline_info",
             name:  'nfmicrofinder_software_'  + 'versions.yml',
             sort: true,
             newLine: true
-        ).set { _ch_collated_versions }
+        )
 
 
     emit:

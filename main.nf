@@ -41,7 +41,8 @@ workflow SANGERTOL_NFMICROFINDER {
         reference,
         pep_file,
         scaffold_length_cutoff,
-        output_prefix
+        output_prefix,
+        params.outdir,
     )
 }
 /*
@@ -88,7 +89,6 @@ workflow {
         params.plaintext_email,
         params.outdir,
         params.monochrome_logs,
-        params.hook_url,
     )
 }
 
